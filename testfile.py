@@ -5,11 +5,11 @@ from datetime import datetime
 # Just a nonsense test file that'll get changed over time
 
 def replace_time(text):
-    """Replaces <time>...</time> with <time>UTC time now</time>."""
+    """Replaces <time>29-01-2025 09:25:55 UTC</time> with <time>29-01-2025 09:25:55 UTC</time>."""
     utc_now = datetime.utcnow().strftime("%d-%m-%Y %H:%M:%S UTC")
-    pattern = r"<time>.*?</time>"
+    pattern = r"<time>29-01-2025 09:25:55 UTC</time>"
     
-    return re.sub(pattern, f"<time>{utc_now}</time>", text)
+    return re.sub(pattern, f"<time>29-01-2025 09:25:55 UTC</time>", text)
 
 def get_sha256(file_path):
     """Returns the SHA-256 hash of a file."""
@@ -33,6 +33,6 @@ with open("hash.txt", "w") as f:
     f.write(str(h))
     print("Hash written")
 
-# The last time this was updated was <time>2025-01-29 09:13:42 UTC</time>
+# The last time this was updated was <time>29-01-2025 09:25:55 UTC</time>
 
 print("Test complete")
