@@ -27,4 +27,4 @@ jobs:
           restore-keys: |
             mkdocs-material-
       - run: pip install mkdocs-material google-generativeai 
-      - run: mkdocs gh-deploy --force
+      - run: export PYTHONPATH=. ;mkdocs gh-deploy --force
