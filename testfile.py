@@ -5,11 +5,19 @@ from datetime import datetime
 # Just a nonsense test file that'll get changed over time
 
 def replace_time(text):
-    """Replaces <time>29-01-2025 09:25:55 UTC</time> with <time>29-01-2025 09:25:55 UTC</time>."""
     utc_now = datetime.utcnow().strftime("%d-%m-%Y %H:%M:%S UTC")
-    pattern = r"<time>29-01-2025 09:25:55 UTC</time>"
     
-    return re.sub(pattern, f"<time>29-01-2025 09:25:55 UTC</time>", text)
+    def is_inside_quotes(index, text):
+        in_single = in_double = False
+        for i, char in enumerate(text):
+            if char in "\"'" and (i == 0 or text[i-1] != '\\'):
+                if char == '"': in_double = not in_double if not in_single else in_double
+                if char == "'": in_single = not in_single if not in_double else in_single
+            if i == index: return in_single or in_double
+        return False
+
+    return re.sub(r"<time>.*?</time>", lambda m: f"<time>{utc_now}</time>" if not is_inside_quotes(m.start(), text) else m.group(0), text)
+
 
 def get_sha256(file_path):
     """Returns the SHA-256 hash of a file."""
