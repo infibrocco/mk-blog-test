@@ -8,7 +8,6 @@ theme:
     - navigation.indexes
 
 plugins:
-  - meta
   - search
   - blog:
       blog_toc: true
