@@ -26,5 +26,5 @@ jobs:
           path: .cache
           restore-keys: |
             mkdocs-material-
-      - run: pip install mkdocs-material google-generativeai mkdocs-material-extensions
+      - run: pip install mkdocs-material google-generativeai mkdocs-material-extensions mkdocs-rss-plugin
       - run: export PYTHONPATH=. ;mkdocs gh-deploy --force
