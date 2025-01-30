@@ -8,6 +8,7 @@ theme:
     - navigation.indexes
 
 plugins:
+  - meta
   - search
   - blog:
       blog_toc: true
@@ -22,7 +23,6 @@ plugins:
       post_slugify: !!python/object/apply:ext.slugs.slugify
         kwds:
           short: true
-  - meta
   - tags
   - rss:
       match_path: "blog/posts/.*"
